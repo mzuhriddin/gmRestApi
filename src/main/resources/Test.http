@@ -1,0 +1,99 @@
+###
+GET http://localhost/api/gm
+
+###
+GET http://localhost/api/gm/2eadbdb2-8161-4868-8846-57f70c32cdbc
+
+###
+POST http://localhost/api/gm
+Content-Type: application/json
+
+{
+  "corpName": "AUTO",
+  "director": "Sarvar",
+  "home": 20,
+  "street": "Vatanparvar",
+  "city": "Bekobod"
+}
+
+###
+PUT http://localhost:80/api/gm/2eadbdb2-8161-4868-8846-57f70c32cdbc
+Content-Type: application/json
+
+{
+  "corpName": "GM",
+  "director": "Marko",
+  "home": 12,
+  "street": "Turdiqul",
+  "city": "Andijon"
+}
+
+###
+DELETE http://localhost/api/gm/2eadbdb2-8161-4868-8846-57f70c32cdbc
+
+###
+GET http://localhost/api/autoShop
+
+###
+GET http://localhost/api/autoShop/
+
+###
+POST http://localhost/api/autoShop
+Content-Type: application/json
+
+{
+  "name": "carShop",
+  "gmId": "2eadbdb2-8161-4868-8846-57f70c32cdbc",
+  "carIds": [
+    "d7a011ad-1b88-41b4-a7d6-0d2faf7096de"
+  ],
+  "home": 2,
+  "street": "S.Olmazor",
+  "city": "Tashkent"
+}
+
+###
+PUT http://localhost:80/api/autoShop/1
+Content-Type: application/json
+
+{
+  "name": "avtosalon",
+  "gmId": "0326e5a4-6b97-47cd-88fb-7e219d54538d",
+  "carIds": [
+    "3b3df752-d05f-496d-934b-8edec3f49104"
+  ],
+  "home": 22,
+  "street": "S.Olmazor",
+  "city": "Tashkent"
+}
+###
+DELETE http://localhost/api/autoShop/1
+
+###
+GET http://localhost/api/car
+
+###
+GET http://localhost/api/car/d7a011ad-1b88-41b4-a7d6-0d2faf7096de
+
+###
+POST http://localhost/api/car
+Content-Type: application/json
+
+{
+  "model": "Audi",
+  "year": 2005,
+  "price": 500000
+}
+
+###
+PUT http://localhost:80/api/car/d7a011ad-1b88-41b4-a7d6-0d2faf7096de
+Content-Type: application/json
+
+{
+  "model": "Bentley",
+  "year": 2020,
+  "price": 600000
+}
+
+###
+DELETE http://localhost/api/car/3b3df752-d05f-496d-934b-8edec3f49104
