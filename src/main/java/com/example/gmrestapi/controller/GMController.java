@@ -11,7 +11,6 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -24,8 +23,9 @@ public class GMController {
 
     @GetMapping
     public HttpEntity<?> getAll() {
-        List<GM> all = gmRepository.findAllByActiveTrue();
-        return ResponseEntity.ok().body(all);
+//        List<GM> all = gmRepository.findAllByActiveTrue();
+//        return ResponseEntity.ok().body(all);
+        return null;
     }
 
     @GetMapping("/{id}")
@@ -62,6 +62,12 @@ public class GMController {
         gm.setActive(false);
         gmRepository.save(gm);
         return ResponseEntity.ok().body("DELETED");
+    }
 
+    //clientga ko'rsatish un
+    @GetMapping("/forClient")
+    public HttpEntity<?> getAllForClient() {
+        ApiResponse response = gmService.getAll();
+        return ResponseEntity.ok().body(response);
     }
 }

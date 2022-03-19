@@ -10,8 +10,8 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/autoShop")
@@ -23,8 +23,9 @@ public class AutoShopController {
 
     @GetMapping
     public HttpEntity<?> getAll() {
-        List<AutoShop> all = autoShopRepository.findAllByActiveTrue();
-        return ResponseEntity.ok().body(all);
+//        List<AutoShop> all = autoShopRepository.findAllByActiveTrue();
+//        return ResponseEntity.ok().body(all);
+        return null;
     }
 
     @GetMapping("/{id}")
@@ -56,6 +57,18 @@ public class AutoShopController {
         autoShopRepository.save(autoShop);
         return ResponseEntity.ok().body("DELETED");
 
+    }
+
+    @GetMapping("/byGmId/{id}")
+    public HttpEntity<?> getAllByGm(@PathVariable UUID id) {
+        return ResponseEntity.ok().body(autoShopRepository.findAllByGm_Id(id));
+    }
+
+    //clientga ko'rsatish un
+    @GetMapping("/forClient")
+    public HttpEntity<?> getAllForClient() {
+        ApiResponse response = autoShopService.getAll();
+        return ResponseEntity.ok().body(response);
     }
 
 }

@@ -5,6 +5,8 @@ GET http://localhost/api/gm
 GET http://localhost/api/gm/2eadbdb2-8161-4868-8846-57f70c32cdbc
 
 ###
+GET http://localhost:80/api/gm/forClient
+###
 POST http://localhost/api/gm
 Content-Type: application/json
 
@@ -70,6 +72,12 @@ Content-Type: application/json
 DELETE http://localhost/api/autoShop/1
 
 ###
+GET http://localhost:80/api/autoshop/byGmId/99689a7f-177d-4e6c-8f6e-dbaa7458c713
+
+###
+GET http://localhost:80/api/autoShop/forClient
+
+###
 GET http://localhost/api/car
 
 ###
@@ -97,3 +105,9 @@ Content-Type: application/json
 
 ###
 DELETE http://localhost/api/car/3b3df752-d05f-496d-934b-8edec3f49104
+
+###
+GET http://localhost:80/api/car/change/d7a011ad-1b88-41b4-a7d6-0d2faf7096de
+
+###
+GET http://localhost/api/car/byAutoShop/11

@@ -23,8 +23,9 @@ public class CarController {
 
     @GetMapping
     public HttpEntity<?> getAll() {
-        List<Car> all = carRepository.findAllByActiveTrue();
-        return ResponseEntity.ok().body(all);
+//        List<Car> all = carRepository.findAllByActiveTrue();
+//        return ResponseEntity.ok().body(all);
+        return null;
     }
 
     @GetMapping("/{id}")
@@ -55,6 +56,22 @@ public class CarController {
         car.setActive(false);
         carRepository.save(car);
         return ResponseEntity.ok().body("DELETED");
+    }
 
+//    @RequestParam boolean status
+    @GetMapping("/change/{id}")
+    public HttpEntity<?> changeActive(@PathVariable UUID id) {
+        Optional<Car> optionalCar = carRepository.findById(id);
+        if (optionalCar.isPresent()) {
+            Car car = optionalCar.get();
+            car.setActive(!car.isActive());
+            carRepository.save(car);
+        }
+        return ResponseEntity.ok().body(optionalCar.orElseThrow(RuntimeException::new));
+    }
+
+    @GetMapping("/byAutoShop/{id}")
+    public HttpEntity<?> getByAutoShop(@PathVariable Integer id) {
+        return ResponseEntity.ok().body(carRepository.getAllByAutoShop(id));
     }
 }
